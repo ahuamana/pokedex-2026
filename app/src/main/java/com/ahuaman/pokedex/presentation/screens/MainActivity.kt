@@ -1,4 +1,4 @@
-package com.ahuaman.pokedex
+package com.ahuaman.pokedex.presentation.screens
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
