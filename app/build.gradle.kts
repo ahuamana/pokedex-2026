@@ -1,6 +1,12 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+
+    //Kotlin Serialization for Safe Args
+    alias(libs.plugins.kotlin.serialization.json)
+    //Hilt & KSP
+    alias(libs.plugins.kotlin.android.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -53,4 +59,26 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+
+    //Lottie
+    implementation (libs.lottie.compose)
+
+    //Navigation Safe
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.kotlin.serialization.json)
+
+    //coil
+    implementation(libs.coil)
+
+    implementation (libs.lifecycle.viewmodel.compose)
+    implementation (libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    //gson
+    //implementation (libs.converter.gson)
+
+
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
 }
