@@ -13,3 +13,8 @@
 - The screen `FavoriteScreen` to display the pokemon favorites in the application.
 - The screen `DashboardScreen` to display the bottom navigation bar in the application.
 - The widget `PokemonCard` to display the pokemon information in a card format in the application.
+- Integrated root screens and navigation in the application.
+- Implemented the use case `GetPokemonListUseCase` to fetch the pokemon list from the data layer.
+
+### Fixed
+- Serialization issues in the data layer when fetching pokemon details with the library `json_serializable`.
