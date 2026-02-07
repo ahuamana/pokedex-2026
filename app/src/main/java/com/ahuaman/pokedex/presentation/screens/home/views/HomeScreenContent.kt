@@ -94,11 +94,9 @@ fun PokemonGrid(state: HomeState,
 @Preview
 @Composable
 private fun HomeScreenContentPreview() {
-
     val fakeData = PokemonMocks.fullPokedexList
     val pagingData = PagingData.from(fakeData)
     val fakePagingItems = flowOf(pagingData).collectAsLazyPagingItems()
-
     HomeScreenContent(
         state = HomeState(
             pokemonList = PokemonMocks.fullPokedexList,
@@ -112,4 +110,5 @@ private fun HomeScreenContentPreview() {
         },
         modifier = Modifier.fillMaxSize()
     )
+
 }
