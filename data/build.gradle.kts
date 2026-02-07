@@ -1,4 +1,4 @@
-import com.android.tools.r8.internal.im
+
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -41,6 +41,10 @@ android {
         compilerOptions.jvmTarget.set(JvmTarget.JVM_21)
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
+
 }
 
 dependencies {
@@ -61,4 +65,12 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.retrofit.serialization)
+
+    //Json serialization
+    implementation(libs.kotlin.serialization.json)
+
+    //okHttp
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+
 }

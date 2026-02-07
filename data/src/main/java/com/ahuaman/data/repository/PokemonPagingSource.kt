@@ -2,6 +2,8 @@ package com.ahuaman.data.repository
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.ahuaman.data.mapper.toDomain
+import com.ahuaman.data.remote.PokeApiService
 import com.ahuaman.domain.model.PokemonPresentationModel
 
 class PokemonPagingSource(

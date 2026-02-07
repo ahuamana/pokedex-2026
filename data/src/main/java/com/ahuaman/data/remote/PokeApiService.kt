@@ -1,6 +1,6 @@
 package com.ahuaman.data.remote
 
-import PokemonDataModel
+import com.ahuaman.data.models.pokemon.PokemonResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -9,5 +9,5 @@ interface PokeApiService {
     suspend fun getPokemonList(
         @Query("offset") offset: Int,
         @Query("limit") limit: Int
-    ): PokemonDataModel
+    ): PokemonResponse
 }

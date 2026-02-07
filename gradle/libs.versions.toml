@@ -43,6 +43,9 @@ pagingVersion = "3.4.0"
 retrofit = "3.0.0"
 retrofitSerialization = "3.0.0"
 
+okhttpVersion = "4.12.0"
+loggingInterceptor = "4.12.0"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -94,6 +97,11 @@ paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.r
 #Retrofit
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-serialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "retrofitSerialization" }
+
+#OkHttp to log network requests and responses
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version = "okhttpVersion" }
+logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

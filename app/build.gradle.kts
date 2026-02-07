@@ -42,6 +42,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     kotlin {
         compilerOptions.jvmTarget.set(JvmTarget.JVM_21)
@@ -86,9 +87,8 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
 
     //gson
-
-
-
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+
+
 }
