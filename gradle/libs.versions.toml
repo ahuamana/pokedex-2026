@@ -45,6 +45,8 @@ retrofitSerialization = "3.0.0"
 
 okhttpVersion = "4.12.0"
 loggingInterceptor = "4.12.0"
+foundation = "1.10.2"
+foundationLayout = "1.10.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -102,6 +104,8 @@ retrofit-serialization = { group = "com.squareup.retrofit2", name = "converter-k
 #OkHttp to log network requests and responses
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version = "okhttpVersion" }
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundation" }
+androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "foundationLayout" }
 
 
 [plugins]

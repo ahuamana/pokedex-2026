@@ -54,6 +54,8 @@ dependencies {
 
     implementation(projects.domain)
     implementation(projects.data)
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.foundation.layout)
     debugImplementation(projects.testing)
 
     implementation(libs.androidx.core.ktx)

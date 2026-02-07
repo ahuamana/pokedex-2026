@@ -1,5 +1,6 @@
 package com.ahuaman.pokedex.presentation.screens.detail.views
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -33,7 +34,8 @@ fun PokemonDetailRoute(viewModel: PokemonDetailViewModel = hiltViewModel(),
                 is DetailIntent.OnBackClick -> onBackClick()
                 else -> viewModel.handleIntent(intent)
             }
-        }
+        },
+        modifier = Modifier
     )
 
 }

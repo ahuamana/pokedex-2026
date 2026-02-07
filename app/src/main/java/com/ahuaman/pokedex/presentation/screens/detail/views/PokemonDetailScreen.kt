@@ -1,6 +1,8 @@
 package com.ahuaman.pokedex.presentation.screens.detail.views
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -35,23 +37,11 @@ fun PokemonDetailScreen(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text(text = state.pokemon?.name ?: "Loading...") },
-                navigationIcon = {
-                    IconButton(onClick = { onIntent(DetailIntent.OnBackClick) }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
-                    }
-                },
-                actions = {
-                    IconButton(onClick = { onIntent(DetailIntent.ToggleFavorite) }) {
-                        Icon(
-                            imageVector = if (state.isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
-                            contentDescription = "Favorite",
-                            tint = if (state.isFavorite) Color.Red else LocalContentColor.current
-                        )
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
+            PokedexCustomTopBar(
+                title = state.pokemon?.name ?: "Detalle del Pokémon",
+                onBackClick = { onIntent(DetailIntent.OnBackClick) },
+                isFavorite = state.isFavorite,
+                onFavoriteToggle = { onIntent(DetailIntent.ToggleFavorite) }
             )
         }
     ) { padding ->

@@ -39,9 +39,6 @@ fun DashboardScreen(modifier: Modifier = Modifier,
     //var selectedItem by remember { mutableIntStateOf(0) }
 
     Scaffold(
-        topBar = {
-            // You can add a TopAppBar here if needed
-        } ,
         bottomBar = {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val currentDestination = navBackStackEntry?.destination
@@ -77,6 +74,7 @@ fun DashboardScreen(modifier: Modifier = Modifier,
             }
         },
         content = { innerPadding ->
+
             NavHost(
                 navController = navController,
                 startDestination = ScreensDashboard.Home,

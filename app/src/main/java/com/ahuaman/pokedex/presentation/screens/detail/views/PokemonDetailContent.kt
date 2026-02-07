@@ -30,8 +30,7 @@ fun PokemonDetailContent(pokemon: PokemonDetailPresentationModel) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(16.dp),
+            .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         AsyncImage(
