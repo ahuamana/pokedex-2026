@@ -1,5 +1,6 @@
 package com.ahuaman.data.repository
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.ahuaman.data.mapper.toDomain
@@ -11,9 +12,13 @@ class PokemonPagingSource(
 ): PagingSource<Int, PokemonPresentationModel>(){
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PokemonPresentationModel> {
         val position = params.key ?: 0
+        Log.d("PagingSource", "Cargando página: $position con loadSize: ${params.loadSize}")
         return try {
             val response = apiService.getPokemonList(offset = position, limit = params.loadSize)
+            Log.d("PagingSource", "Respuesta recibida: ${response.results.size} items")
+
             val pokemonList = response.results.map { it.toDomain() }
+
 
             LoadResult.Page(
                 data = pokemonList,
@@ -21,6 +26,7 @@ class PokemonPagingSource(
                 nextKey = if (pokemonList.isEmpty()) null else position + params.loadSize
             )
         } catch (e: Exception) {
+            Log.e("PagingSource", "Error cargando datos", e)
             LoadResult.Error(e)
         }
     }
