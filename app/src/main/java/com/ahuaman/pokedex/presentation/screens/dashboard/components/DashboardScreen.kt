@@ -24,6 +24,9 @@ import com.ahuaman.pokedex.presentation.screens.dashboard.models.ScreensDashboar
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.ahuaman.pokedex.presentation.screens.detail.views.PokemonDetailContent
+import com.ahuaman.pokedex.presentation.screens.detail.views.PokemonDetailRoute
+import com.ahuaman.pokedex.presentation.screens.detail.views.PokemonDetailScreen
 import com.ahuaman.pokedex.presentation.screens.favorite.FavoriteScreen
 import com.ahuaman.pokedex.presentation.screens.home.views.HomeScreenRoute
 
@@ -80,11 +83,21 @@ fun DashboardScreen(modifier: Modifier = Modifier,
                 modifier = modifier.padding(innerPadding),
             ) {
                 composable<ScreensDashboard.Home> () {
-                    HomeScreenRoute()
+                    HomeScreenRoute(onNavigateToDetail = { id ->
+                        navController.navigate(ScreensDashboard.Detail(id = id))
+                    })
                 }
 
                 composable<ScreensDashboard.Favorite> {
                     FavoriteScreen()
+                }
+
+                composable<ScreensDashboard.Detail> { backStackEntry ->
+                    PokemonDetailRoute(
+                        onBackClick = {
+                            navController.popBackStack()
+                        }
+                    )
                 }
             }
         }

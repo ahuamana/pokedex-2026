@@ -1,5 +1,6 @@
 package com.ahuaman.pokedex.presentation.screens.home.views
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -54,7 +55,12 @@ fun HomeScreenContent(
                 }
             }
             else -> {
-                PokemonGrid(state = state, pokemonItems = pokemonItems, modifier)
+                PokemonGrid(
+                    state = state,
+                    pokemonItems = pokemonItems,
+                    modifier = modifier,
+                    onIntent = onIntent
+                )
             }
 
         }
@@ -65,7 +71,8 @@ fun HomeScreenContent(
 @Composable
 fun PokemonGrid(state: HomeState,
                 pokemonItems: LazyPagingItems<PokemonPresentationModel>,
-                modifier: Modifier = Modifier) {
+                modifier: Modifier = Modifier,
+                onIntent: (HomeIntent) -> Unit) {
     LazyVerticalGrid(
         modifier = modifier,
         columns = GridCells.Fixed(2),
@@ -79,7 +86,10 @@ fun PokemonGrid(state: HomeState,
         ) { index ->
 
             pokemonItems[index]?.let { pokemon ->
-                PokemonItem(pokemon = pokemon)
+
+                PokemonItem(pokemon = pokemon, modifier = Modifier.clickable {
+                    onIntent(HomeIntent.OnPokemonClick(pokemon.id))
+                })
             }
         }
 

@@ -8,8 +8,10 @@ import com.ahuaman.domain.model.PokemonPresentationModel
 import com.ahuaman.domain.usecase.GetPokemonListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,6 +23,9 @@ class HomeViewModel @Inject constructor(
 
     private val _state = MutableStateFlow(HomeState())
     val state: StateFlow<HomeState> = _state.asStateFlow()
+
+    private val _effect = MutableSharedFlow<HomeEffect>()
+    val effect = _effect.asSharedFlow()
 
     private var _pokemonPagingData = MutableStateFlow<PagingData<PokemonPresentationModel>>(PagingData.empty())
     val pokemonPagingData = _pokemonPagingData.asStateFlow()
@@ -34,7 +39,11 @@ class HomeViewModel @Inject constructor(
         when (intent) {
             is HomeIntent.LoadPokemon -> fetchPokemon()
             is HomeIntent.RetryLoading -> fetchPokemon()
-            is HomeIntent.OnPokemonClick -> { /* Navegación */ }
+            is HomeIntent.OnPokemonClick -> {
+                viewModelScope.launch {
+                    _effect.emit(HomeEffect.NavigateToDetail(intent.id))
+                }
+            }
         }
     }
 

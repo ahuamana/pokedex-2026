@@ -12,16 +12,27 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.ahuaman.domain.model.PokemonPresentationModel
+import com.ahuaman.pokedex.presentation.screens.home.viewmodel.HomeEffect
+import com.ahuaman.pokedex.presentation.screens.home.viewmodel.HomeState
 import com.ahuaman.pokedex.presentation.screens.home.viewmodel.HomeViewModel
 
+
 @Composable
-fun HomeScreenRoute(viewModel: HomeViewModel = hiltViewModel()) {
-    val uiState by viewModel.state.collectAsStateWithLifecycle()
+fun HomeScreenRoute(
+    viewModel: HomeViewModel = hiltViewModel(),
+    onNavigateToDetail: (Int) -> Unit
+) {
+    val uiState: HomeState by viewModel.state.collectAsStateWithLifecycle()
     val pokemonItems = viewModel.pokemonPagingData.collectAsLazyPagingItems()
 
-    LaunchedEffect(pokemonItems.loadState) {
-        Log.d("PagingDebug", "Refresh: ${pokemonItems.loadState.refresh}")
-        Log.d("PagingDebug", "Append: ${pokemonItems.loadState.append}")
+    LaunchedEffect(Unit) {
+        viewModel.effect.collect { effect ->
+            when (effect) {
+                is HomeEffect.NavigateToDetail -> {
+                    onNavigateToDetail(effect.id)
+                }
+            }
+        }
     }
 
     val currentState = uiState.copy(
