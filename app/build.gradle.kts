@@ -53,6 +53,7 @@ android {
 dependencies {
 
     implementation(projects.domain)
+    implementation(projects.data)
     debugImplementation(projects.testing)
 
     implementation(libs.androidx.core.ktx)
@@ -90,5 +91,8 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
+    //paging
+    implementation(libs.paging.runtime)
+    implementation(libs.paging.compose)
 
 }
