@@ -17,6 +17,7 @@
 - Implemented the use case `GetPokemonListUseCase` to fetch the pokemon list from the data layer.
 - Integrated libraries for unit testing in the project.
 - Integrated unit testing for mappers and data layer in the project.
+- Covered 100% of the code with unit tests in the project in DATA layer and DOMAIN layer.
 
 ### Fixed
 - Serialization issues in the data layer when fetching pokemon details with the library `json_serializable`.
