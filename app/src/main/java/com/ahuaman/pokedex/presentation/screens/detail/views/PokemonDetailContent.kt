@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -21,7 +20,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.ahuaman.domain.model.PokemonDetailPresentationModel
+import com.ahuaman.pokedex.presentation.screens.mapper.toPresentation
+import com.ahuaman.pokedex.presentation.screens.models.PokemonDetailPresentationModel
 import com.ahuaman.pokedex.ui.theme.PokedexTheme
 import com.ahuaman.testing.pokemons.PokemonDetailMocks
 
@@ -72,6 +72,6 @@ private fun InfoItem(label: String, value: String) {
 @Composable
 private fun PokemonDetailContentPreview() {
     PokedexTheme {
-        PokemonDetailContent(pokemon = PokemonDetailMocks.bulbasaurDetail)
+        PokemonDetailContent(pokemon = PokemonDetailMocks.bulbasaurDetail.toPresentation())
     }
 }

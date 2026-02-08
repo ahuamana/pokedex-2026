@@ -1,4 +1,4 @@
-package com.ahuaman.domain.model
+package com.ahuaman.pokedex.presentation.screens.models
 
 data class PokemonPresentationModel (
     val id: Int,

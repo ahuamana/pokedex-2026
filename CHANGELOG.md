@@ -15,6 +15,7 @@
 - The widget `PokemonCard` to display the pokemon information in a card format in the application.
 - Integrated root screens and navigation in the application.
 - Implemented the use case `GetPokemonListUseCase` to fetch the pokemon list from the data layer.
+- Integrated libraries for unit testing in the project.
 
 ### Fixed
 - Serialization issues in the data layer when fetching pokemon details with the library `json_serializable`.

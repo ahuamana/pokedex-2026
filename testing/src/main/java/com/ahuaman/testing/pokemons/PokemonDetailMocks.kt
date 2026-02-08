@@ -1,15 +1,15 @@
 package com.ahuaman.testing.pokemons
 
-import com.ahuaman.domain.model.PokemonDetailPresentationModel
+import com.ahuaman.domain.model.PokemonDetailDomainModel
 import com.ahuaman.domain.model.PokemonStat
 
 object PokemonDetailMocks {
-    val bulbasaurDetail = PokemonDetailPresentationModel(
+    val bulbasaurDetail = PokemonDetailDomainModel(
         id = 1,
         name = "Bulbasaur",
         imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-        weight = "6.9 kg",
-        height = "0.7 m",
+        weightKg = 6.9,
+        heightM = 0.7,
         types = listOf("Grass", "Poison"),
         stats = listOf(
             PokemonStat("hp", 45),

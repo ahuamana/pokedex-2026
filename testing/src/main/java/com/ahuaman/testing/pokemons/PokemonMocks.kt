@@ -1,10 +1,10 @@
 package com.ahuaman.testing.pokemons
 
-import com.ahuaman.domain.model.PokemonPresentationModel
+import com.ahuaman.domain.model.PokemonDomainModel
 
 object PokemonMocks {
 
-    val singlePokemon = PokemonPresentationModel(
+    val singlePokemon = PokemonDomainModel(
         id = 25,
         name = "Pikachu",
         imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
@@ -12,61 +12,61 @@ object PokemonMocks {
 
     val fullPokedexList = listOf(
         singlePokemon,
-        PokemonPresentationModel(
+        PokemonDomainModel(
             id = 1,
             name = "Bulbasaur",
             imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
         ),
-        PokemonPresentationModel(
+        PokemonDomainModel(
             id = 4,
             name = "Charmander",
             imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"
         ),
-        PokemonPresentationModel(
+        PokemonDomainModel(
             id = 7,
             name = "Squirtle",
             imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png"
         ),
-        PokemonPresentationModel(
+        PokemonDomainModel(
             id = 39,
             name = "Jigglypuff",
             imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/39.png"
         ),
-        PokemonPresentationModel(
+        PokemonDomainModel(
             id = 52,
             name = "Meowth",
             imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/52.png"
         ),
-        PokemonPresentationModel(
+        PokemonDomainModel(
             id = 54,
             name = "Psyduck",
             imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/54.png"
         ),
-        PokemonPresentationModel(
+        PokemonDomainModel(
             id = 143,
             name = "Snorlax",
             imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png"
         ),
 
-        PokemonPresentationModel(
+        PokemonDomainModel(
             id = 150,
             name = "Mewtwo",
             imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png"
         ),
 
-        PokemonPresentationModel(
+        PokemonDomainModel(
             id= 133,
             name = "Eevee",
             imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png"
         ),
 
-        PokemonPresentationModel(
+        PokemonDomainModel(
             id = 94,
             name = "Gengar",
             imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
         ),
 
-        PokemonPresentationModel(
+        PokemonDomainModel(
             id = 149,
             name = "Dragonite",
             imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png"

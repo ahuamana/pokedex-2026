@@ -1,6 +1,6 @@
 package com.ahuaman.pokedex.presentation.screens.detail.models
 
-import com.ahuaman.domain.model.PokemonDetailPresentationModel
+import com.ahuaman.pokedex.presentation.screens.models.PokemonDetailPresentationModel
 
 data class DetailState(
     val pokemon: PokemonDetailPresentationModel? = null,

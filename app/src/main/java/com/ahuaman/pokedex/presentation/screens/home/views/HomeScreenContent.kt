@@ -21,10 +21,11 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.ahuaman.domain.model.PokemonPresentationModel
+import com.ahuaman.pokedex.presentation.screens.models.PokemonPresentationModel
 import com.ahuaman.pokedex.presentation.screens.home.components.PokemonItem
 import com.ahuaman.pokedex.presentation.screens.home.viewmodel.HomeIntent
 import com.ahuaman.pokedex.presentation.screens.home.viewmodel.HomeState
+import com.ahuaman.pokedex.presentation.screens.mapper.toPresentation
 import com.ahuaman.testing.pokemons.PokemonMocks
 import kotlinx.coroutines.flow.flowOf
 
@@ -104,12 +105,12 @@ fun PokemonGrid(state: HomeState,
 @Preview
 @Composable
 private fun HomeScreenContentPreview() {
-    val fakeData = PokemonMocks.fullPokedexList
+    val fakeData = PokemonMocks.fullPokedexList.map { it.toPresentation() }
     val pagingData = PagingData.from(fakeData)
     val fakePagingItems = flowOf(pagingData).collectAsLazyPagingItems()
     HomeScreenContent(
         state = HomeState(
-            pokemonList = PokemonMocks.fullPokedexList,
+            pokemonList = PokemonMocks.fullPokedexList.map { it.toPresentation() },
             isLoadingInitial = false,
             isLoadingMore = false,
             error = null

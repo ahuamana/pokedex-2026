@@ -10,7 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.ahuaman.domain.model.PokemonPresentationModel
+import com.ahuaman.pokedex.presentation.screens.mapper.toPresentation
+import com.ahuaman.pokedex.presentation.screens.models.PokemonPresentationModel
 import com.ahuaman.testing.pokemons.PokemonMocks
 
 @Composable
@@ -41,6 +42,6 @@ fun PokemonItem(pokemon: PokemonPresentationModel,
 @Composable
 private fun PokemonItemPrev() {
     PokemonItem(
-       pokemon = PokemonMocks.singlePokemon
+       pokemon = PokemonMocks.singlePokemon.toPresentation()
     )
 }

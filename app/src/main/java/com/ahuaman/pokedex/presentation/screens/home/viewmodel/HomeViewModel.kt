@@ -4,8 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.ahuaman.domain.model.PokemonPresentationModel
+import androidx.paging.map
+import com.ahuaman.pokedex.presentation.screens.models.PokemonPresentationModel
 import com.ahuaman.domain.usecase.GetPokemonListUseCase
+import com.ahuaman.pokedex.presentation.screens.mapper.toPresentation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -52,7 +54,8 @@ class HomeViewModel @Inject constructor(
             getPokemonListUseCase()
                 .cachedIn(viewModelScope)
                 .collect { pagingData ->
-                    _pokemonPagingData.value = pagingData
+                    val mappedData = pagingData.map { it.toPresentation() }
+                    _pokemonPagingData.value = mappedData
                 }
         }
     }

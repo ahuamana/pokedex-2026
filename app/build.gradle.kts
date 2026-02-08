@@ -97,4 +97,7 @@ dependencies {
     implementation(libs.paging.runtime)
     implementation(libs.paging.compose)
 
+    //logging
+    implementation(libs.timber)
+
 }

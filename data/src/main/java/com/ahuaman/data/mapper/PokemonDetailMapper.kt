@@ -1,20 +1,17 @@
 package com.ahuaman.data.mapper
 
 import com.ahuaman.data.models.pokemon.PokemonDetailResponse
-import com.ahuaman.domain.model.PokemonDetailPresentationModel
-import com.ahuaman.domain.model.PokemonPresentationModel
+import com.ahuaman.domain.model.PokemonDetailDomainModel
 import com.ahuaman.domain.model.PokemonStat
 
-fun PokemonDetailResponse.toDomain(): PokemonDetailPresentationModel {
-    return PokemonDetailPresentationModel(
+fun PokemonDetailResponse.toDomain(): PokemonDetailDomainModel {
+    return PokemonDetailDomainModel(
         id = id,
-        name = name.replaceFirstChar { it.uppercase() },
+        name = name,
         imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$id.png",
-        weight = "${weight / 10.0} kg", // The API delivers weight in hectograms, so we convert it to kilograms
-        height = "${height / 10.0} m",   // The API delivers height in decimeters, so we convert it to meters
+        weightKg = weight / 10.0, // Logic stays in Data Layer
+        heightM = height / 10.0,  // Logic stays in Data Layer
         types = types.map { it.type.name },
-        stats = stats.map {
-            PokemonStat(name = it.stat.name, value = it.baseStat)
-        }
+        stats = stats.map { PokemonStat(name = it.stat.name, value = it.baseStat) }
     )
 }

@@ -8,6 +8,7 @@ import com.ahuaman.domain.usecase.GetPokemonDetailUseCase
 import com.ahuaman.pokedex.presentation.screens.detail.models.DetailEffect
 import com.ahuaman.pokedex.presentation.screens.detail.models.DetailIntent
 import com.ahuaman.pokedex.presentation.screens.detail.models.DetailState
+import com.ahuaman.pokedex.presentation.screens.mapper.toPresentation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -62,7 +63,7 @@ class PokemonDetailViewModel @Inject constructor(
     private fun fetchDetail(id: Int) {
         viewModelScope.launch {
             getPokemonDetailUseCase(id).onSuccess { detail ->
-                _state.update { it.copy(pokemon = detail, isLoading = false) }
+                _state.update { it.copy(pokemon = detail.toPresentation(), isLoading = false) }
             }.onFailure { error ->
                 _state.update { it.copy(error = error.message, isLoading = false) }
             }

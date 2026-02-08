@@ -11,7 +11,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.ahuaman.domain.model.PokemonPresentationModel
+import com.ahuaman.pokedex.presentation.screens.models.PokemonPresentationModel
 import com.ahuaman.pokedex.presentation.screens.home.viewmodel.HomeEffect
 import com.ahuaman.pokedex.presentation.screens.home.viewmodel.HomeState
 import com.ahuaman.pokedex.presentation.screens.home.viewmodel.HomeViewModel

@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.ahuaman.pokedex.presentation.screens.detail.models.DetailIntent
 import com.ahuaman.pokedex.presentation.screens.detail.models.DetailState
+import com.ahuaman.pokedex.presentation.screens.mapper.toPresentation
 import com.ahuaman.pokedex.ui.theme.PokedexTheme
 import com.ahuaman.testing.pokemons.PokemonDetailMocks
 
@@ -68,7 +69,7 @@ private fun DetailSuccessPreview() {
     PokedexTheme {
         PokemonDetailScreen(
             state = DetailState(
-                pokemon = PokemonDetailMocks.bulbasaurDetail,
+                pokemon = PokemonDetailMocks.bulbasaurDetail.toPresentation(),
                 isLoading = false,
                 isFavorite = true // Probamos cómo se ve con el corazón lleno
             ),

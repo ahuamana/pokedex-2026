@@ -1,6 +1,6 @@
 package com.ahuaman.pokedex.presentation.screens.home.viewmodel
 
-import com.ahuaman.domain.model.PokemonPresentationModel
+import com.ahuaman.pokedex.presentation.screens.models.PokemonPresentationModel
 
 data class HomeState(
     val pokemonList: List<PokemonPresentationModel> = emptyList(),
