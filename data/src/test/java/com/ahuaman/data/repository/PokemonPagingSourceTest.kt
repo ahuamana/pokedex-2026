@@ -26,7 +26,7 @@ class PokemonPagingSourceTest {
     fun `Initial load success state - returns Page`() = runTest {
         // 1. Create a list that matches the loadSize (20)
         val pokemonList = List(20) { i ->
-            PokemonDataModel(name = "Pokemon $i", url = "...")
+            PokemonDataModel(name = "pokemon$i", url = "https://pokeapi.co/api/v2/pokemon/${i + 1}/")
         }
         val response = PokemonResponse(results = pokemonList)
 
@@ -83,7 +83,7 @@ class PokemonPagingSourceTest {
     fun `Append load - Success - Returns Page with correct nextKey`() = runTest {
         // 1. Create a full list of 20 items to satisfy the loadSize
         val pokemonList = List(20) { i ->
-            PokemonDataModel(name = "Pokemon ${i + 20}", url = "...")
+            PokemonDataModel(name = "pokemon${i + 20}", url = "https://pokeapi.co/api/v2/pokemon/${i + 21}/")
         }
         val response = PokemonResponse(results = pokemonList)
 
@@ -110,7 +110,7 @@ class PokemonPagingSourceTest {
     fun `Append load - Last Page - Returns Page with null nextKey`() = runTest {
         // Given: We request 20 items, but the API only returns 5 (the end of the data)
         val pokemonList = List(5) { i ->
-            PokemonDataModel(name = "Last Pokemon $i", url = "...")
+            PokemonDataModel(name = "pokemon${i + 20}", url = "https://pokeapi.co/api/v2/pokemon/${i + 21}/")
         }
         val response = PokemonResponse(results = pokemonList)
 

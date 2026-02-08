@@ -16,6 +16,7 @@
 - Integrated root screens and navigation in the application.
 - Implemented the use case `GetPokemonListUseCase` to fetch the pokemon list from the data layer.
 - Integrated libraries for unit testing in the project.
+- Integrated unit testing for mappers and data layer in the project.
 
 ### Fixed
 - Serialization issues in the data layer when fetching pokemon details with the library `json_serializable`.

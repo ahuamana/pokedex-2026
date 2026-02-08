@@ -1,88 +1,71 @@
 package com.ahuaman.data.repository
 
+import com.ahuaman.data.models.pokemon.PokemonDetailResponse
+import com.ahuaman.data.remote.PokeApiService
+import com.google.common.truth.Truth.assertThat
+import io.mockk.coEvery
+import io.mockk.mockk
+import kotlinx.coroutines.test.runTest
+import org.junit.Before
 import org.junit.Test
+
 
 class PokemonRepositoryImplTest {
 
-    @Test
-    fun `getPokemonPagingData returns flow of paging data`() {
-        // Verify that the function returns a Flow object containing PagingData when called.
-        // TODO implement test
+    private val apiService: PokeApiService = mockk()
+    private lateinit var repository: PokemonRepositoryImpl
+
+    @Before
+    fun setup() {
+        // We inject the mocked API service into the implementation
+        repository = PokemonRepositoryImpl(apiService)
     }
 
     @Test
-    fun `PagingConfig pageSize validation`() {
-        // Ensure the Pager is initialized with a pageSize of 20 as defined in the repository implementation.
-        // TODO implement test
+    fun `getPokemonPagingData should return a flow of paging data`() = runTest {
+        // When: Calling the repository
+        val result = repository.getPokemonPagingData()
+
+        // Then: Assert that we receive a Flow (PagingData is hard to verify content
+        // directly, but we verify the stream exists)
+        assertThat(result).isNotNull()
     }
 
     @Test
-    fun `PagingConfig placeholders disabled`() {
-        // Assert that enablePlaceholders is set to false in the PagingConfig configuration.
-        // TODO implement test
+    fun `getPokemonDetail should return success when api succeeds`() = runTest {
+        // Given
+        val pokemonId = 1
+        val mockResponse = PokemonDetailResponse(
+            id = 1,
+            name = "bulbasaur",
+            weight = 69,
+            height = 7,
+            types = emptyList(),
+            stats = emptyList()
+        )
+        coEvery { apiService.getPokemonDetail(pokemonId) } returns mockResponse
+
+        // When
+        val result = repository.getPokemonDetail(pokemonId)
+
+        // Then
+        assertThat(result.isSuccess).isTrue()
+        assertThat(result.getOrNull()?.name).isEqualTo("bulbasaur")
+        // Verify math from mapper is applied (69 / 10.0)
+        assertThat(result.getOrNull()?.weightKg).isEqualTo(6.9)
     }
 
     @Test
-    fun `PokemonPagingSource instantiation`() {
-        // Verify that the pagingSourceFactory correctly instantiates a PokemonPagingSource
-        // using the provided apiService.
-        // TODO implement test
-    }
+    fun `getPokemonDetail should return failure when api throws exception`() = runTest {
+        // Given
+        val pokemonId = 1
+        coEvery { apiService.getPokemonDetail(pokemonId) } throws Exception("Network Error")
 
-    @Test
-    fun `Initial load success state`() {
-        // Test that the Flow emits a PagingData object that correctly represents a successful
-        // initial load from the apiService.
-        // TODO implement test
-    }
+        // When
+        val result = repository.getPokemonDetail(pokemonId)
 
-    @Test
-    fun `Initial load empty list handling`() {
-        // Check the behavior of the returned Flow when the apiService returns an empty list
-        // of Pokemon on the first page.
-        // TODO implement test
-    }
-
-    @Test
-    fun `Initial load network error propagation`() {
-        // Verify that network exceptions from the apiService during the first load are properly
-        // captured as LoadState.Error within the PagingData.
-        // TODO implement test
-    }
-
-    @Test
-    fun `Subsequent page loading success`() {
-        // Assert that requesting the next page via the Pager correctly triggers the apiService
-        // and appends new data to the PagingData stream.
-        // TODO implement test
-    }
-
-    @Test
-    fun `End of pagination signaling`() {
-        // Ensure that the PagingData correctly signals 'endOfPaginationReached' when the
-        // apiService indicates there are no more Pokemon to fetch.
-        // TODO implement test
-    }
-
-    @Test
-    fun `Data transformation to presentation model`() {
-        // Verify that the data emitted by the Flow consists of PokemonPresentationModel
-        // instances after passing through the PagingSource mapping logic.
-        // TODO implement test
-    }
-
-    @Test
-    fun `Flow cancellation handling`() {
-        // Test that the PagingSource and underlying api calls are properly cancelled
-        // when the Flow's coroutine scope is cancelled.
-        // TODO implement test
-    }
-
-    @Test
-    fun `Rapid succession load requests`() {
-        // Test the stability of the PagingData Flow when multiple page requests are
-        // triggered in rapid succession.
-        // TODO implement test
+        // Then
+        assertThat(result.isFailure).isTrue()
     }
 
 }

@@ -14,6 +14,7 @@ import com.ahuaman.pokedex.presentation.screens.models.PokemonPresentationModel
 import com.ahuaman.pokedex.presentation.screens.home.components.PokemonItem
 import com.ahuaman.pokedex.presentation.screens.mapper.toPresentation
 import com.ahuaman.testing.pokemons.PokemonMocks
+import kotlin.collections.map
 
 @Composable
 fun FavoriteScreen(

@@ -100,4 +100,13 @@ dependencies {
     //logging
     implementation(libs.timber)
 
+
+    //Unit Testing
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.google.truth)
+    testImplementation(libs.turbine)
+    testImplementation(libs.coroutines.test)
+    testImplementation(libs.okhttp.mockwebserver)
+
 }

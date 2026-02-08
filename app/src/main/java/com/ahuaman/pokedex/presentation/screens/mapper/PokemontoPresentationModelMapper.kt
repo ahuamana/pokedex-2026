@@ -19,7 +19,7 @@ fun PokemonDetailDomainModel.toPresentation(): PokemonDetailPresentationModel {
     )
 }
 
-fun PokemonStat.toPresentation(): com.ahuaman.pokedex.presentation.screens.models.PokemonStatPresentationModel {
+fun PokemonStat.toPresentation(): PokemonStatPresentationModel {
     return PokemonStatPresentationModel(
         name = name.replaceFirstChar { it.uppercase() },
         value = value

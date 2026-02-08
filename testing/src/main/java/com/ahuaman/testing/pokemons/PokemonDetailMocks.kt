@@ -3,6 +3,7 @@ package com.ahuaman.testing.pokemons
 import com.ahuaman.domain.model.PokemonDetailDomainModel
 import com.ahuaman.domain.model.PokemonStat
 
+
 object PokemonDetailMocks {
     val bulbasaurDetail = PokemonDetailDomainModel(
         id = 1,

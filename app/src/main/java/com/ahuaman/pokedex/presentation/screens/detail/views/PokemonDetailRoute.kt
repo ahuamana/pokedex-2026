@@ -7,11 +7,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ahuaman.pokedex.presentation.screens.detail.models.DetailEffect
 import com.ahuaman.pokedex.presentation.screens.detail.models.DetailIntent
 import com.ahuaman.pokedex.presentation.screens.detail.viewmodel.PokemonDetailViewModel
-import com.ahuaman.pokedex.presentation.screens.home.viewmodel.HomeEffect
 
 @Composable
 fun PokemonDetailRoute(viewModel: PokemonDetailViewModel = hiltViewModel(),

@@ -9,19 +9,22 @@ import com.ahuaman.data.remote.PokeApiService
 import com.ahuaman.domain.model.PokemonDomainModel
 import timber.log.Timber
 import java.io.IOException
-
 class PokemonPagingSource(
     private val apiService: PokeApiService
-): PagingSource<Int, PokemonDomainModel>(){
+) : PagingSource<Int, PokemonDomainModel>() {
+
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PokemonDomainModel> {
         val position = params.key ?: 0
-        Timber.tag("PagingSource").d("Cargando página: $position con loadSize: ${params.loadSize}")
+
         return try {
-            val response = apiService.getPokemonList(offset = position, limit = params.loadSize)
-            Timber.tag("PagingSource").d("Respuesta recibida: ${response.results.size} items")
+            val response = apiService.getPokemonList(
+                offset = position,
+                limit = params.loadSize
+            )
 
-            val pokemonList = response.results.map { it.toDomain() }
-
+            // Senior Fix: Handle nullable results list using .orEmpty()
+            val results = response.results.orEmpty()
+            val pokemonList = results.map { it.toDomain() }
 
             LoadResult.Page(
                 data = pokemonList,
@@ -33,18 +36,19 @@ class PokemonPagingSource(
                 }
             )
         } catch (e: IOException) {
-            // Specific handling for network issues
             LoadResult.Error(e)
         } catch (e: HttpException) {
-            // Specific handling for 4xx or 5xx server errors
             LoadResult.Error(e)
         } catch (e: Exception) {
             LoadResult.Error(e)
         }
     }
 
+    // Senior Implementation: Essential for state restoration (e.g., orientation changes)
     override fun getRefreshKey(state: PagingState<Int, PokemonDomainModel>): Int? {
-        TODO("Not yet implemented")
+        return state.anchorPosition?.let { anchorPosition ->
+            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(state.config.pageSize)
+                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(state.config.pageSize)
+        }
     }
-
 }
