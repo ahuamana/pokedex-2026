@@ -109,4 +109,7 @@ dependencies {
     testImplementation(libs.coroutines.test)
     testImplementation(libs.okhttp.mockwebserver)
 
+    //Android Testing Viewmodel
+    testImplementation(libs.androidx.core.testing)
+
 }

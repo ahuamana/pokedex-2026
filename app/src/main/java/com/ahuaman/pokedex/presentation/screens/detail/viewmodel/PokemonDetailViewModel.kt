@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @HiltViewModel
 class PokemonDetailViewModel @Inject constructor(
@@ -39,7 +40,7 @@ class PokemonDetailViewModel @Inject constructor(
 
     init {
         savedStateHandle.keys().forEach { key ->
-            Log.d("ViewModelDebug", "Key found in SavedState: $key")
+            Timber.tag("ViewModelDebug").d("Key found in SavedState: $key")
         }
 
         handleIntent(DetailIntent.LoadDetail(pokemonId))

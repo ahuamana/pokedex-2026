@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.androidx.runner)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
@@ -82,5 +83,8 @@ dependencies {
 
     //logging
     implementation(libs.timber)
+
+    //hilt testing
+    testImplementation(libs.hilt.android.testing)
 
 }

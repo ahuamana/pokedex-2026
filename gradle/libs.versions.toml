@@ -56,8 +56,11 @@ turbine = "1.2.1"
 mockwebserver = "5.3.2"
 kotlinxCoroutines = "1.10.2"
 
+
+
 #logs
 timber = "5.0.1"
+runner = "1.7.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -127,6 +130,12 @@ okhttp-mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver",
 
 #Timber
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+
+# Testing Architecture Components (SavedStateHandle, etc.)
+androidx-core-testing = { group = "androidx.arch.core", name = "core-testing", version = "2.2.0" }
+
+hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hiltVersion" }
+androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
