@@ -31,7 +31,7 @@ fun PokemonItem(pokemon: PokemonPresentationModel,
 
         AsyncImage(
             model = pokemon.imageUrl,
-            contentDescription = null,
+            contentDescription = "Image of ${pokemon.name}",
         )
 
     }
